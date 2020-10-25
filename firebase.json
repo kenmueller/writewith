@@ -31,7 +31,7 @@
 			},
 			{
 				"source": "/edit/*",
-				"destination": "/edit/[key]"
+				"destination": "/edit/[key].html"
 			}
 		],
 		"headers": [
