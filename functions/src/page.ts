@@ -47,7 +47,6 @@ export default https.onRequest(async ({ method, url }, res) => {
 	
 	const { title, body } = contentSnapshot.val()
 	
-	res.removeHeader('Cache-Control')
 	res.send(`<!DOCTYPE html>
 <html lang="en">
 	<head>
