@@ -3,9 +3,14 @@ import CKEditor from '@ckeditor/ckeditor5-react'
 import _Editor from 'ckeditor5-memorize.ai'
 
 const CONFIG = {
+	startupFocus: true,
 	simpleUpload: {
 		uploadUrl: 'https://write-with.web.app/api/upload'
 	}
+}
+
+const focusEditor = (editor: any) => {
+	editor.editing.view.focus()
 }
 
 export interface EditorProps {
@@ -23,6 +28,7 @@ const Editor = ({ value, onChange }: EditorProps) => {
 			editor={_Editor}
 			data={value}
 			config={CONFIG}
+			onInit={focusEditor}
 			onChange={_onChange}
 		/>
 	)
