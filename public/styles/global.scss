@@ -42,6 +42,7 @@ code {
 	
 	&.ck-content {
 		height: 100%;
+		overflow: visible !important;
 		border: none !important;
 		box-shadow: none !important;
 	}
