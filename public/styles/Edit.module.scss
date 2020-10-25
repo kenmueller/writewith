@@ -1,3 +1,5 @@
+$spacing: 24px;
+
 .root {
 	display: flex;
 	flex-direction: column;
@@ -5,7 +7,14 @@
 	
 	:global(.ck.ck-editor) {
 		flex-grow: 1;
-		padding: 0 12px;
+	}
+	
+	:global(.ck.ck-toolbar) {
+		padding: 0 16px;
+	}
+	
+	:global(.ck.ck-content) {
+		padding: 0 24px;
 	}
 }
 
@@ -13,12 +22,12 @@
 	flex-shrink: 0;
 	display: flex;
 	align-items: center;
-	padding: 16px 24px;
+	padding: 16px $spacing;
 	background: #fafafa;
 }
 
 .home {
-	margin-right: 24px;
+	margin-right: $spacing;
 	text-decoration: none;
 	font-size: 20px;
 	font-weight: 900;
@@ -42,10 +51,11 @@
 .slugForm {
 	display: flex;
 	position: relative;
-	margin-right: 24px;
+	margin-right: $spacing;
 }
 
-.slugInput {
+.slugInput,
+.visitPageInput {
 	padding: 8px 12px;
 	background: #f2f2f2;
 	border: none;
@@ -53,14 +63,15 @@
 	outline: none;
 }
 
-.slugSubmit {
+.slugSubmit,
+.visitPageSubmit {
 	width: 32px;
 	color: white;
 	background: #1486e7;
 	border: none;
 	border-radius: 0 8px 8px 0;
 	outline: none;
-	transition: background 0.3s;
+	transition: background 0.3s, opacity 0.3s;
 	
 	&:not(:disabled):hover {
 		background: #f85ea1;
@@ -73,6 +84,7 @@
 
 .titleForm {
 	position: relative;
+	margin-right: $spacing;
 }
 
 .titleInput {
@@ -83,12 +95,21 @@
 	outline: none;
 }
 
+.visitPageForm {
+	display: flex;
+	position: relative;
+}
+
+.visitPageSubmit:disabled {
+	opacity: 0.5;
+}
+
 .spinner {
 	animation: spin 0.7s linear infinite;
-	
-	@keyframes spin {
-		to {
-			transform: rotate(1turn);
-		}
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(1turn);
 	}
 }

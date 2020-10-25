@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleNotch, faSave, faShareSquare, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight, faCircleNotch, faSave, faShareSquare, faTimes } from '@fortawesome/free-solid-svg-icons'
 import cx from 'classnames'
 
 import Page from 'models/Page'
@@ -24,6 +24,8 @@ const Edit = () => {
 	
 	const [isSlugLoading, setIsSlugLoading] = useState(false)
 	const [isSlugAvailable, setIsSlugAvailable] = useState<boolean | null>(null)
+	
+	const [visitPageSlug, setVisitPageSlug] = useState('')
 	
 	const pageSlug = page?.slug
 	
@@ -66,6 +68,17 @@ const Edit = () => {
 			updatePageContent(key, { body })
 	}, [key])
 	
+	const visitPage = useCallback((event: FormEvent<HTMLFormElement>) => {
+		event.preventDefault()
+		
+		if (visitPageSlug)
+			window.open(`/${visitPageSlug}`)
+	}, [visitPageSlug])
+	
+	const onVisitPageSlugChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+		setVisitPageSlug(event.target.value)
+	}, [setVisitPageSlug])
+	
 	useEffect(() => (
 		key ? observePage(key, setPage) : undefined
 	), [key, setPage])
@@ -101,7 +114,7 @@ const Edit = () => {
 			<Head>
 				<title key="title">
 					{page
-						? `Edit ${page.content.title || 'Untitled document'}`
+						? `Edit ${page.content.title || 'untitled document'}`
 						: 'WriteWith'
 					}
 				</title>
@@ -118,7 +131,7 @@ const Edit = () => {
 						className={styles.slugInput}
 						id="slug-input"
 						required
-						placeholder={slug === null ? 'Loading...' : undefined}
+						placeholder={slug === null ? 'loading...' : undefined}
 						value={slug ?? ''}
 						onChange={onSlugChange}
 					/>
@@ -150,10 +163,26 @@ const Edit = () => {
 						className={styles.titleInput}
 						id="title-input"
 						required
-						placeholder={page ? 'Untitled document' : 'Loading...'}
+						placeholder={page ? 'untitled document' : 'loading...'}
 						value={page?.content.title ?? ''}
 						onChange={onTitleChange}
 					/>
+				</form>
+				<form className={styles.visitPageForm} onSubmit={visitPage}>
+					<label className={styles.label} htmlFor="visit-page-input">
+						visit or create page
+					</label>
+					<input
+						className={styles.visitPageInput}
+						id="visit-page-input"
+						required
+						placeholder="url"
+						value={visitPageSlug}
+						onChange={onVisitPageSlugChange}
+					/>
+					<button className={styles.visitPageSubmit} disabled={!visitPageSlug}>
+						<FontAwesomeIcon icon={faArrowRight} />
+					</button>
 				</form>
 			</nav>
 			{page && <Editor value={page.content.body} onChange={onBodyChange} />}
