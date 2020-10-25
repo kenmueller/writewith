@@ -5,9 +5,9 @@ import styles from 'styles/Home.module.scss'
 const Home = () => (
 	<div className={styles.root}>
 		<Head>
-			<title>Next.js</title>
+			<title>WriteWith</title>
 		</Head>
-		<h1>If you see this, your Next.js app is working!</h1>
+		<h1>WriteWith</h1>
 	</div>
 )
 
