@@ -35,7 +35,7 @@ export default https.onRequest(async ({ method, url }, res) => {
 			database.child(`slugs/${slug}`).set(key)
 		])
 		
-		return res.redirect(301, `/edit/${key}`)
+		return res.redirect(307, `/edit/${key}`)
 	}
 	
 	const contentSnapshot = await database.child(`pages/${keySnapshot.val()}/content`).once('value')
