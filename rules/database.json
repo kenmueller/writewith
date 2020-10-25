@@ -1,0 +1,18 @@
+{
+	"rules": {
+		"pages": {
+			"$page": {
+				".read": true,
+				"content": {
+					".write": true,
+					"title": {
+						".validate": "newData.isString()"
+					},
+					"body": {
+						".validate": "newData.isString()"
+					}
+				}
+			}
+		}
+	}
+}

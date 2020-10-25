@@ -1,0 +1,94 @@
+.root {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	
+	:global(.ck.ck-editor) {
+		flex-grow: 1;
+		padding: 0 12px;
+	}
+}
+
+.nav {
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	padding: 16px 24px;
+	background: #fafafa;
+}
+
+.home {
+	margin-right: 24px;
+	text-decoration: none;
+	font-size: 20px;
+	font-weight: 900;
+	color: #1486e7;
+	
+	&:hover,
+	&:focus {
+		text-decoration: underline;
+	}
+}
+
+.label {
+	position: absolute;
+	top: 0;
+	left: 8px;
+	font-size: 12px;
+	font-weight: bold;
+	transform: translateY(-50%);
+}
+
+.slugForm {
+	display: flex;
+	position: relative;
+	margin-right: 24px;
+}
+
+.slugInput {
+	padding: 8px 12px;
+	background: #f2f2f2;
+	border: none;
+	border-radius: 8px 0 0 8px;
+	outline: none;
+}
+
+.slugSubmit {
+	width: 32px;
+	color: white;
+	background: #1486e7;
+	border: none;
+	border-radius: 0 8px 8px 0;
+	outline: none;
+	transition: background 0.3s;
+	
+	&:not(:disabled):hover {
+		background: #f85ea1;
+	}
+}
+
+.slugSubmitInvalid {
+	background: #e53e3e;
+}
+
+.titleForm {
+	position: relative;
+}
+
+.titleInput {
+	padding: 8px 12px;
+	background: #f2f2f2;
+	border: none;
+	border-radius: 8px;
+	outline: none;
+}
+
+.spinner {
+	animation: spin 0.7s linear infinite;
+	
+	@keyframes spin {
+		to {
+			transform: rotate(1turn);
+		}
+	}
+}

@@ -1,0 +1,48 @@
+@use '~@fortawesome/fontawesome-svg-core/styles';
+
+*,
+::before,
+::after {
+	box-sizing: border-box;
+	font-family: Muli, Arial, Helvetica, sans-serif;
+}
+
+body {
+	overscroll-behavior: none;
+	margin: 0;
+}
+
+button {
+	cursor: pointer;
+	
+	&:disabled {
+		cursor: default;
+	}
+}
+
+pre,
+code {
+	font-family: monospace;
+}
+
+.ck {
+	&.ck-toolbar {
+		border: none !important;
+		border-radius: 0;
+		
+		&__separator {
+			margin-top: 8px !important;
+			margin-bottom: 8px !important;
+		}
+	}
+	
+	&.ck-editor__main {
+		height: calc(100% - 40.2px);
+	}
+	
+	&.ck-content {
+		height: 100%;
+		border: none !important;
+		box-shadow: none !important;
+	}
+}
