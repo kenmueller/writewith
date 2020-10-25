@@ -19,6 +19,7 @@ body {
 	-webkit-print-color-adjust: exact !important;
 	color-adjust: exact !important;
 	margin: 0;
+	padding: 0 20px;
 	font-family: Muli, Arial, Helvetica, sans-serif;
 }
 
